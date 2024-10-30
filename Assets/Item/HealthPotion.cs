@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
+    [SerializeField] GameObject Player;
+    [SerializeField] int _healValue = 10;
+    //public override void Use(PickUpItem pui)
+    //{
+    //    base.Use(pui);
 
-    public override void Use(PickUpItem pui)
+
+
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        base.Use(pui);
-
-
-
+        Player.GetComponent<EntityHealth>().TakeHealth(_healValue);
+        Destroy(gameObject);
     }
-
 }
