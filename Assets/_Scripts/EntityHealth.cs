@@ -8,7 +8,7 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _text;
     [SerializeField] int _currentLife;
-    [SerializeField] int _maxLife = 100;
+    [SerializeField] int _maxLife;
     [SerializeField] Slider _healthSlide;
 
     void Awake()
@@ -31,8 +31,6 @@ public class EntityHealth : MonoBehaviour
         {
             TakeDamage(20);
         }
-
-
     }
 
     public void TakeDamage(int damageAmount)
@@ -44,6 +42,7 @@ public class EntityHealth : MonoBehaviour
             if (_currentLife < 0)
             {
                 _currentLife = 0;
+                _text.text = $"{_currentLife} / {_maxLife}";
             }
         }
 

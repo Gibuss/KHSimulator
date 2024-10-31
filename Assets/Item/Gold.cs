@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Gold : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int goldValue = 15; 
+    [SerializeField] private GoldManager goldManager;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Effect(GameObject player)
     {
-        
+        if (goldManager != null) 
+        {
+            goldManager.AddGold(goldValue); 
+        }
+        else
+        {
+            Debug.LogWarning("GoldManager reference is not set in " + gameObject.name);
+        }
+
+        Use(null); 
     }
 }
